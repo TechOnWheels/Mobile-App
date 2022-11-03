@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/maintenance/domain/entities/maintenance.dart';
 import 'package:wheel_manager/styles/styles.dart';
-import 'package:wheel_manager/tracking.dart';
+import 'package:wheel_manager/tracking/presentation/tracking-detail/tracking.dart';
 import 'package:wheel_manager/maintenance/presentation/maintenance-serviceDetail/viewMaintenance.dart';
 import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 

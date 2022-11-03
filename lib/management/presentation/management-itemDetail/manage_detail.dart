@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wheel_manager/renting/presentation/renting-detail/book.dart';
 import 'package:wheel_manager/management/presentation/management-edit/edit_detail.dart';
-import 'package:wheel_manager/tracking.dart';
+import 'package:wheel_manager/tracking/presentation/tracking-detail/tracking.dart';
 
 
 class ManageDetail extends StatelessWidget {

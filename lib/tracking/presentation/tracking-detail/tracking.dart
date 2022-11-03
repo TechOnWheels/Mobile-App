@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wheel_manager/constants.dart';
 import 'package:wheel_manager/styles/styles.dart';
 
 class Tracking extends StatefulWidget {
@@ -58,7 +57,7 @@ class _TrackingState extends State<Tracking> {
       _polyline.add(Polyline(
         polylineId: PolylineId('1'),
         points: latLen,
-        color: Colors.green,
+        color: Color(0xffE57355),
       ));
     }
   }
