@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wheel_manager/search_vehicle.dart';
+import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
 
 import '../saved_vehicle.dart';
 

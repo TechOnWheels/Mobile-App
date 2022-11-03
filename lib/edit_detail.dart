@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:wheel_manager/book.dart';
+import 'package:wheel_manager/renting/presentation/renting-detail/book.dart';
 import 'package:wheel_manager/my_vehicle.dart';
 import 'package:wheel_manager/tracking.dart';
 

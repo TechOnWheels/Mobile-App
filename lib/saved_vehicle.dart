@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/manage_detail.dart';
 import 'package:wheel_manager/styles.dart';
 
-import 'models/vehicle.dart';
+import 'renting/domain/entities/vehicle.dart';
 
 class SavedVehicle extends StatefulWidget {
   const SavedVehicle({Key? key}) : super(key: key);

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/add_Vehicle.dart';
 import 'package:wheel_manager/styles.dart';
-import 'package:wheel_manager/view_detail.dart';
+import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
-import 'models/vehicle.dart';
+import 'renting/domain/entities/vehicle.dart';
 
 class MyVehicle extends StatefulWidget {
   const MyVehicle({Key? key}) : super(key: key);

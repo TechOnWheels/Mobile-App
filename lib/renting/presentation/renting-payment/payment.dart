@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wheel_manager/saved_vehicle.dart';
 
-import 'book.dart';
-import 'confirmation.dart';
+import '../renting-detail/book.dart';
+import '../renting-confirmation/confirmation.dart';
 
 class payment extends StatelessWidget{
   @override

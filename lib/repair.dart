@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wheel_manager/models/maintenance.dart';
+import 'package:wheel_manager/maintenance/domain/entities/maintenance.dart';
 import 'package:wheel_manager/styles.dart';
 import 'package:wheel_manager/tracking.dart';
 import 'package:wheel_manager/viewMaintenance.dart';
-import 'package:wheel_manager/view_detail.dart';
+import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
 class Repair extends StatefulWidget {
   const Repair({Key? key}) : super(key: key);

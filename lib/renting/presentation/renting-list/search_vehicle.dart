@@ -3,10 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wheel_manager/models/vehicle.dart';
+import 'package:wheel_manager/renting/domain/entities/vehicle.dart';
+import 'package:wheel_manager/renting/presentation/widgets/favorite.dart';
+import 'package:wheel_manager/renting/presentation/widgets/stars_quality.dart';
 import 'package:wheel_manager/sign_up.dart';
 import 'package:wheel_manager/styles.dart';
-import 'package:wheel_manager/view_detail.dart';
+import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
 class SearchVehicle extends StatefulWidget {
   const SearchVehicle({Key? key}) : super(key: key);
@@ -46,32 +48,12 @@ class _SearchVehicleState extends State<SearchVehicle> {
               children: [
                 Container(
                   alignment: Alignment.center,
-                  //margin: EdgeInsets.only(bottom: 15),
                   child: Row(
                     children: [
-                      /*
-                            Container(
-                              //margin: EdgeInsets.only(left: 0,right: 0),
-                              //FLECHA REGRESAR
-                              child: TextButton(
-                                onPressed: () {
-                                  //Navigator.pushNamed(context, "registrate");
-                                },
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: const Color (0xFF24253D),
-                                  size: 30,
-                                ),
-                              ),
-                            ),
-                             */
-
-                      //TITULO REGISTRATE
                       Column(
                         children: [
                           Container(
                             alignment: Alignment.center,
-                            //margin: EdgeInsets.only(bottom: 43),
                             child: Row(
                               children: [
                                 Container(
@@ -171,28 +153,17 @@ class _SearchVehicleState extends State<SearchVehicle> {
                           return Container(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 1.sp, vertical: 1.sp),
-                            /*
-                            decoration: new BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              borderRadius: new BorderRadius.circular(8.0),
-                            ),
-
-                             */
                             child: Card(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 margin: EdgeInsets.all(5),
                                 elevation: 5,
 
-                                // Dentro de esta propiedad usamos ClipRRect
                                 child: ClipRRect(
-                                  // Los bordes del contenido del card se cortan usando BorderRadius
                                   borderRadius: BorderRadius.circular(10),
-                                  // EL widget hijo que será recortado segun la propiedad anterior
                                   child: Column(
                                     children: <Widget>[
                                       Image(
-                                        // Como queremos traer una imagen desde un url usamos NetworkImage
                                         image: NetworkImage(
                                           vehicles[i].image,
                                         ),
@@ -232,33 +203,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
                                       SizedBox(
                                         height: 10,
                                       ),
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffFFCE31),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffFFCE31),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffFFCE31),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffFFCE31),
-                                          ),
-                                          Icon(
-                                            Icons.star,
-                                            color: Color(0xffFFCE31),
-                                          ),
-                                        ],
-                                      ),
+                                      StarsQuality(),
                                       SizedBox(
                                         height: 10,
                                       ),
@@ -266,18 +211,10 @@ class _SearchVehicleState extends State<SearchVehicle> {
                                         width: 150,
                                         child: Row(
                                           children: [
-                                            //Icon(Icons.favorite_border, color: Color(0xffC64949),),
-                                            FavoriteButton(
-                                              iconSize: 40,
-                                              valueChanged: (_isFavorite) {
-                                                print(
-                                                    'Is Favorite $_isFavorite)');
-                                              },
-                                            ),
+                                            FavoriteIcon(),
                                             SizedBox(
                                               width: 100,
                                             ),
-                                            //Icon(Icons.arrow_circle_right, color: Color(0xff2B4C59),),
                                             Container(
                                               width: 10.0,
                                               height: 25.0,
@@ -323,7 +260,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          // Add your onPressed code here!
+
         },
         label: const Text('Filter'),
         icon: const Icon(Icons.filter_list),

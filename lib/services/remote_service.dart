@@ -1,4 +1,4 @@
-import 'package:wheel_manager/models/vehicle.dart';
+import 'package:wheel_manager/renting/domain/entities/vehicle.dart';
 import 'package:http/http.dart' as http;
 /*
 class RemoteService{
