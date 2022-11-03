@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wheel_manager/renting/presentation/renting-payment/payment.dart';
-import 'package:wheel_manager/saved_vehicle.dart';
+import 'package:wheel_manager/management/presentation/management-saved/saved_vehicle.dart';
 
 
 class Confirmation extends StatelessWidget {

@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wheel_manager/renting/presentation/renting-detail/book.dart';
-import 'package:wheel_manager/my_vehicle.dart';
+import 'package:wheel_manager/management/presentation/management-edit/edit_detail.dart';
 import 'package:wheel_manager/tracking.dart';
 
 
-class EditDetail extends StatelessWidget {
-  const EditDetail({Key? key}) : super(key: key);
+class ManageDetail extends StatelessWidget {
+  const ManageDetail({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +63,34 @@ class EditDetail extends StatelessWidget {
                       ],
                     ),
                   ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(0),
+                        child: IconButton(
+                          padding: const EdgeInsets.all(0),
+                          alignment: Alignment.center,
+                          icon: Icon(Icons.location_on), iconSize: 30,
+                          color: Colors.red,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const Tracking()),
+                            );
+                          },
+                        ),
+
+                      ),
+                    ],
+                  )
                 ]
             ),
           ),
           Container(
               child:
               Image(
-                  image: AssetImage('assets/skate_2.png'),
+                  image: AssetImage('assets/skate.jpg'),
                   fit: BoxFit.fitWidth
               )
           ),
@@ -363,9 +384,9 @@ class EditDetail extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(context,
                               MaterialPageRoute(
-                                  builder: (context) => const MyVehicle()),);
+                                  builder: (context) => const EditDetail()),);
                           },
-                          child: Text("Save", style: TextStyle(
+                          child: Text("Edit", style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                           ),),

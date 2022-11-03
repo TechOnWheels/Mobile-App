@@ -2,11 +2,11 @@ import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wheel_manager/add_Vehicle.dart';
-import 'package:wheel_manager/styles.dart';
+import 'package:wheel_manager/management/presentation/management-add/add_Vehicle.dart';
+import 'package:wheel_manager/styles/styles.dart';
 import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
-import 'renting/domain/entities/vehicle.dart';
+import '../../../renting/domain/entities/vehicle.dart';
 
 class MyVehicle extends StatefulWidget {
   const MyVehicle({Key? key}) : super(key: key);

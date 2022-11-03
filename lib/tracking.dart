@@ -6,7 +6,7 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/constants.dart';
-import 'package:wheel_manager/styles.dart';
+import 'package:wheel_manager/styles/styles.dart';
 
 class Tracking extends StatefulWidget {
   const Tracking({Key? key}) : super(key: key);

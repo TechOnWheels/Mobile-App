@@ -7,7 +7,7 @@ import 'package:wheel_manager/renting/domain/entities/vehicle.dart';
 import 'package:wheel_manager/renting/presentation/widgets/favorite.dart';
 import 'package:wheel_manager/renting/presentation/widgets/stars_quality.dart';
 import 'package:wheel_manager/sign_up.dart';
-import 'package:wheel_manager/styles.dart';
+import 'package:wheel_manager/styles/styles.dart';
 import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
 class SearchVehicle extends StatefulWidget {

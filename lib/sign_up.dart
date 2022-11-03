@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
-import 'package:wheel_manager/styles.dart';
+import 'package:wheel_manager/styles/styles.dart';
 import 'package:wheel_manager/widget/bottom_app_bar.dart';
 
 class SignUp extends StatefulWidget {

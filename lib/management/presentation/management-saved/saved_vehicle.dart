@@ -2,10 +2,10 @@ import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wheel_manager/manage_detail.dart';
-import 'package:wheel_manager/styles.dart';
+import 'package:wheel_manager/management/presentation/management-itemDetail/manage_detail.dart';
+import 'package:wheel_manager/styles/styles.dart';
 
-import 'renting/domain/entities/vehicle.dart';
+import '../../../renting/domain/entities/vehicle.dart';
 
 class SavedVehicle extends StatefulWidget {
   const SavedVehicle({Key? key}) : super(key: key);

@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
 
-import '../my_vehicle.dart';
+import '../management/presentation/management-list/my_vehicle.dart';
 import '../maintenance/presentation/maintenance-list/repair.dart';
-import '../saved_vehicle.dart';
+import '../management/presentation/management-saved/saved_vehicle.dart';
 
 class BottomBar2 extends StatefulWidget {
   const BottomBar2({super.key});
