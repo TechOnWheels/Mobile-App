@@ -231,7 +231,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                       child: Row(
                         children: [
                           Image.asset('assets/google.png'),
@@ -271,7 +271,7 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                       child: Row(
                         children: [
                           Image.asset('assets/facebook.png'),
