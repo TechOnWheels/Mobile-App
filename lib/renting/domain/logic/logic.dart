@@ -17,12 +17,36 @@ class DataBaseHelper {
     print("${response.statusCode}");
     print("addRent");
     print("${response.body}");
+    //print(startController);
+    return response;
+  }
+
+  //Add User - CRUD
+  Future<http.Response> addUser_(String nameController, String emailController,
+      String phoneController, String addressController, String passwordController) async {
+    var url = 'http://10.0.2.2:8080/api/customers';
+    Map data = {
+      'name:firstName': '$nameController',
+      'email:email': '$emailController',
+      'phone': '$phoneController',
+      'address:streetAddress': '$addressController',
+      'password': '$passwordController'
+    };
+
+    var body = json.encode(data);
+
+    var response = await http.post(Uri.parse(url),
+        headers: {"Content-Type": "application/json"}, body: body);
+    print("${response.statusCode}");
+    print("${response.body}");
+    print(emailController);
+    print("User added");
     return response;
   }
 
 
-
   //Add User - CRUD
+
   Future<http.Response> addUser(String nameController, String emailController,
       String phoneController) async {
     var url = 'https://jsonplaceholder.typicode.com/users';
@@ -40,6 +64,7 @@ class DataBaseHelper {
     print("${response.body}");
     return response;
   }
+
 
   //UpdateUser
   Future<http.Response> editUser(String id, String nameController,

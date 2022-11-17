@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wheel_manager/renting/domain/logic/logic.dart';
 import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
 import 'package:wheel_manager/styles/styles.dart';
 import 'package:wheel_manager/widget/bottom_app_bar.dart';
+
+import 'package:http/http.dart' as http;
+
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -14,6 +20,14 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool hiddenPassword = true;
+
+  DataBaseHelper dataBaseHelper = DataBaseHelper();
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +99,7 @@ class _SignUpState extends State<SignUp> {
                     width: 340,
                     alignment: Alignment.centerLeft,
                     child: TextField(
+                      controller: nameController,
                       decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -105,6 +120,7 @@ class _SignUpState extends State<SignUp> {
                     width: 340,
                     alignment: Alignment.centerLeft,
                     child: TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -126,6 +142,7 @@ class _SignUpState extends State<SignUp> {
                     width: 340,
                     alignment: Alignment.centerLeft,
                     child: TextField(
+                      controller: phoneController,
                       decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -147,6 +164,7 @@ class _SignUpState extends State<SignUp> {
                     width: 340,
                     alignment: Alignment.centerLeft,
                     child: TextField(
+                      controller: addressController,
                       decoration: InputDecoration(
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -168,6 +186,7 @@ class _SignUpState extends State<SignUp> {
                     width: 340,
                     alignment: Alignment.centerLeft,
                     child: TextField(
+                      controller: passwordController,
                       obscureText: hiddenPassword,
                       maxLines: 1,
                       decoration: InputDecoration(
@@ -235,9 +254,13 @@ class _SignUpState extends State<SignUp> {
                       height: 60,
                       child: ElevatedButton(
                         onPressed: () {
+                          dataBaseHelper.addUser_(nameController.text.trim(),
+                              emailController.text.trim(), phoneController.text.trim(),
+                              addressController.text.trim(), passwordController.text.trim());
                           Navigator.push(
                             context,
                             //MaterialPageRoute(builder: (context) => const SearchVehicle()),
+
                             MaterialPageRoute(builder: (context) => const BottomBar()),
                           );
                         },
