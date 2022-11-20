@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:wheel_manager/renting/presentation/renting-payment/payment.dart';
 import 'package:wheel_manager/management/presentation/management-saved/saved_vehicle.dart';
 
+import '../../../widget/bottom_app_bar.dart';
+
 
 class Confirmation extends StatelessWidget {
   const Confirmation ({Key? key}) : super(key: key);
@@ -154,7 +156,8 @@ class Confirmation extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(context,
                               MaterialPageRoute(
-                                  builder: (context) => SavedVehicle()),);
+                                  //builder: (context) => SavedVehicle()),);
+                                  builder: (context) => BottomBar()),);
                           },
                           child: Text("Go Back", style: TextStyle(
                             color: Colors.white,

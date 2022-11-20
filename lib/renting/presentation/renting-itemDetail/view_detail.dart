@@ -84,9 +84,17 @@ class viewDetail extends StatelessWidget {
           Container(
               child:
               Image(
+                image: NetworkImage(
+                  //vehicles[i].image,
+                  "https://picsum.photos/700/400?random",
+                ),
+                //height: 120,
+                fit: BoxFit.fitWidth
+              ),
+              /*Image(
                   image: AssetImage('assets/skate.jpg'),
                   fit: BoxFit.fitWidth
-              )
+              )*/
           ),
           Container(
             padding: const EdgeInsets.only(right:20,left:20,top:20,bottom: 10),
@@ -524,9 +532,19 @@ class _DetailState extends State<Detail> {
           Container(
               child:
               Image(
+                  image: NetworkImage(
+                    //vehicles[i].image,
+                    "https://picsum.photos/700/400?random",
+                  ),
+                  height: 140,
+                  //fit: BoxFit.fitWidth
+              ),
+                  /*
+              Image(
                   image: AssetImage('assets/skate.jpg'),
                   fit: BoxFit.fitWidth
               )
+                  */
           ),
           Container(
             padding: const EdgeInsets.only(right:20,left:20,top:20,bottom: 10),

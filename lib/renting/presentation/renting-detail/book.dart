@@ -795,13 +795,13 @@ class _BookPageState extends State<BookPage> {
                       onPressed: () {
                         dataBaseHelper.addRent(startController.text.trim(),
                             endController.text.trim());
-                        Navigator.pop(context, true);
-                        /*
+                        //Navigator.pop(context, true);
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => payment()),
                         );
-                        */
+
                       },
                       child: Text(
                         "Book Now",

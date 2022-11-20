@@ -363,14 +363,15 @@ class ItemList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: Column(
                     children: <Widget>[
-                      /*
+
                     Image(
                       image: NetworkImage(
-                        vehicles[i].image,
+                        //vehicles[i].image,
+                        "https://picsum.photos/700/400?random",
                       ),
                       height: 120,
                     ),
-                    */
+
                       Text(
                         list[i]['name'].toString(),
                         style: TextStyle(
