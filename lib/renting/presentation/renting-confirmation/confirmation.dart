@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:wheel_manager/renting/presentation/renting-payment/payment.dart';
 import 'package:wheel_manager/management/presentation/management-saved/saved_vehicle.dart';
 
-import '../../../widget/bottom_app_bar.dart';
+import '../../../common/widget/bottom_app_bar.dart';
 
 
 class Confirmation extends StatelessWidget {

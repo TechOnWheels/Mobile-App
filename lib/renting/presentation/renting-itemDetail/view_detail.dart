@@ -429,7 +429,7 @@ class _DetailState extends State<Detail> {
       setState(() {});
     }
   }
-
+/*
   void confirm() {
     AlertDialog alertDialog = new AlertDialog(
       content: new Text(
@@ -458,6 +458,7 @@ class _DetailState extends State<Detail> {
 
     showDialog(context: context, builder: (_) => alertDialog);
   }
+  */
 
   @override
   Widget build(BuildContext context) {

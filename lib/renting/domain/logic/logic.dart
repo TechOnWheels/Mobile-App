@@ -3,6 +3,15 @@ import 'dart:convert';
 
 class DataBaseHelper {
 
+  Future<List> getData() async {
+    final response =
+    await http.get(Uri.parse("https://jsonplaceholder.typicode.com/users"));
+    //await http.get(Uri.parse("http://10.0.2.2:8080/api/vehicles"));
+    print("${response.statusCode}");
+    print("Hola");
+    return json.decode(response.body);
+  }
+
   Future<http.Response> addRent(String startController, String endController) async {
     var url = 'http://10.0.2.2:8080/api/booking';
     Map data = {
@@ -66,6 +75,7 @@ class DataBaseHelper {
   }
 
 
+  /*
   //UpdateUser
   Future<http.Response> editUser(String id, String nameController,
       String emailController, String phoneController) async {
@@ -101,4 +111,5 @@ class DataBaseHelper {
     print("${response.statusCode}");
     return response;
   }
+   */
 }

@@ -85,8 +85,19 @@ class book extends StatelessWidget {
             ]),
           ),
           Container(
-              child: Image(
-                  image: AssetImage('assets/skate.jpg'), fit: BoxFit.fitWidth)),
+              child:
+              Image(
+                  image: NetworkImage(
+                    //vehicles[i].image,
+                    "https://picsum.photos/700/400?random",
+                  ),
+                  //height: 120,
+                  fit: BoxFit.fitWidth
+              ),
+                  /*
+              Image(
+                  image: AssetImage('assets/skate.jpg'), fit: BoxFit.fitWidth),*/
+          ),
           Container(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             child: Row(children: [
@@ -411,9 +422,21 @@ class _BookPageState extends State<BookPage> {
               ]),
             ),
             Container(
-                child: Image(
+                child:
+                Image(
+                    image: NetworkImage(
+                      //vehicles[i].image,
+                      "https://picsum.photos/700/400?random",
+                    ),
+                    //height: 120,
+                    fit: BoxFit.fitWidth
+                ),
+                    /*
+                Image(
                     image: AssetImage('assets/skate.jpg'),
-                    fit: BoxFit.fitWidth)),
+                    fit: BoxFit.fitWidth),
+              */
+            ),
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
               child: Row(children: [
@@ -474,9 +497,9 @@ class _BookPageState extends State<BookPage> {
                                 context: context,
                                 locale: const Locale("es", "PE"),
                                 initialDate: DateTime.now(),
-                                firstDate: DateTime(2008),
-                                lastDate: DateTime(valueDate.year,
-                                    valueDate.month, valueDate.day),
+                                //firstDate: DateTime(2008),
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime(2030),
                               );
 
                               //DateFormat sdf = new DateFormat("yyyy-MM-dd'T'HH:mm:ss");
@@ -556,9 +579,9 @@ class _BookPageState extends State<BookPage> {
                                 context: context,
                                 locale: const Locale("es", "PE"),
                                 initialDate: DateTime.now(),
-                                firstDate: DateTime(2008),
-                                lastDate: DateTime(
-                                    valueDate.year, valueDate.month, valueDate.day),
+                                //firstDate: DateTime(2008),
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime(2030),
                               );
 
                               if (pickedDate != null) {

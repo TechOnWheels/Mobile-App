@@ -17,11 +17,229 @@ class Vehicle{
   
 }
 
+class Vehicle_ {
+  String? vehicleId;
+  String? vehicleName;
+  String? imageURL;
+  String? description;
+  int? price;
+  int? qualification;
+  Status? status;
+  Brand? brand;
+  VehicleTypeId? vehicleTypeId;
+  OwnerId? ownerId;
+
+  Vehicle_(
+      {this.vehicleId,
+        this.vehicleName,
+        this.imageURL,
+        this.description,
+        this.price,
+        this.qualification,
+        this.status,
+        this.brand,
+        this.vehicleTypeId,
+        this.ownerId});
+
+  Vehicle_.fromJson(Map<String, dynamic> json) {
+    vehicleId = json['vehicleId'];
+    vehicleName = json['vehicleName'];
+    imageURL = json['imageURL'];
+    description = json['description'];
+    price = json['price'];
+    qualification = json['qualification'];
+    status =
+    json['status'] != null ? new Status.fromJson(json['status']) : null;
+    brand = json['brand'] != null ? new Brand.fromJson(json['brand']) : null;
+    vehicleTypeId = json['vehicleTypeId'] != null
+        ? new VehicleTypeId.fromJson(json['vehicleTypeId'])
+        : null;
+    ownerId =
+    json['ownerId'] != null ? new OwnerId.fromJson(json['ownerId']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['vehicleId'] = this.vehicleId;
+    data['vehicleName'] = this.vehicleName;
+    data['imageURL'] = this.imageURL;
+    data['description'] = this.description;
+    data['price'] = this.price;
+    data['qualification'] = this.qualification;
+    if (this.status != null) {
+      data['status'] = this.status!.toJson();
+    }
+    if (this.brand != null) {
+      data['brand'] = this.brand!.toJson();
+    }
+    if (this.vehicleTypeId != null) {
+      data['vehicleTypeId'] = this.vehicleTypeId!.toJson();
+    }
+    if (this.ownerId != null) {
+      data['ownerId'] = this.ownerId!.toJson();
+    }
+    return data;
+  }
+}
+
+class Status {
+  String? statusVehicle;
+
+  Status({this.statusVehicle});
+
+  Status.fromJson(Map<String, dynamic> json) {
+    statusVehicle = json['statusVehicle'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['statusVehicle'] = this.statusVehicle;
+    return data;
+  }
+}
+
+class Brand {
+  String? brandName;
+
+  Brand({this.brandName});
+
+  Brand.fromJson(Map<String, dynamic> json) {
+    brandName = json['brandName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['brandName'] = this.brandName;
+    return data;
+  }
+}
+
+class VehicleTypeId {
+  String? typeId;
+  String? typeName;
+
+  VehicleTypeId({this.typeId, this.typeName});
+
+  VehicleTypeId.fromJson(Map<String, dynamic> json) {
+    typeId = json['typeId'];
+    typeName = json['typeName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['typeId'] = this.typeId;
+    data['typeName'] = this.typeName;
+    return data;
+  }
+}
+
+class OwnerId {
+  String? customerId;
+  Name? name;
+  Email? email;
+  String? phone;
+  String? password;
+  Address? address;
+
+  OwnerId(
+      {this.customerId,
+        this.name,
+        this.email,
+        this.phone,
+        this.password,
+        this.address});
+
+  OwnerId.fromJson(Map<String, dynamic> json) {
+    customerId = json['customerId'];
+    name = json['name'] != null ? new Name.fromJson(json['name']) : null;
+    email = json['email'] != null ? new Email.fromJson(json['email']) : null;
+    phone = json['phone'];
+    password = json['password'];
+    address =
+    json['address'] != null ? new Address.fromJson(json['address']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['customerId'] = this.customerId;
+    if (this.name != null) {
+      data['name'] = this.name!.toJson();
+    }
+    if (this.email != null) {
+      data['email'] = this.email!.toJson();
+    }
+    data['phone'] = this.phone;
+    data['password'] = this.password;
+    if (this.address != null) {
+      data['address'] = this.address!.toJson();
+    }
+    return data;
+  }
+}
+
+class Name {
+  String? firstName;
+  String? secondName;
+
+  Name({this.firstName, this.secondName});
+
+  Name.fromJson(Map<String, dynamic> json) {
+    firstName = json['firstName'];
+    secondName = json['secondName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['firstName'] = this.firstName;
+    data['secondName'] = this.secondName;
+    return data;
+  }
+}
+
+class Email {
+  String? email;
+
+  Email({this.email});
+
+  Email.fromJson(Map<String, dynamic> json) {
+    email = json['email'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['email'] = this.email;
+    return data;
+  }
+}
+
+class Address {
+  String? streetAddress;
+  String? city;
+  String? country;
+
+  Address({this.streetAddress, this.city, this.country});
+
+  Address.fromJson(Map<String, dynamic> json) {
+    streetAddress = json['streetAddress'];
+    city = json['city'];
+    country = json['country'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['streetAddress'] = this.streetAddress;
+    data['city'] = this.city;
+    data['country'] = this.country;
+    return data;
+  }
+}
+
 class User {
   final String name, email, userName;
   User(this.name, this.email, this.userName);
 }
 
+/*
 class Userlist {
   int? id;
   String? name;
@@ -143,3 +361,5 @@ class Company {
     return data;
   }
 }
+*/
+

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wheel_manager/sign_in.dart';
+import 'package:wheel_manager/common/sign_in.dart';
 
 
 void main() {

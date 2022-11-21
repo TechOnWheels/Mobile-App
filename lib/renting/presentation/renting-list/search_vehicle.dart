@@ -9,13 +9,13 @@ import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/renting/domain/entities/vehicle.dart';
 import 'package:wheel_manager/renting/presentation/widgets/favorite.dart';
 import 'package:wheel_manager/renting/presentation/widgets/stars_quality.dart';
-import 'package:wheel_manager/sign_up.dart';
-import 'package:wheel_manager/styles/styles.dart';
 import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
 import 'package:http/http.dart' as http;
 
+import '../../../common/styles/styles.dart';
 import '../../../search.dart';
+import '../../domain/logic/logic.dart';
 
 class SearchVehicle extends StatefulWidget {
   const SearchVehicle({Key? key}) : super(key: key);
@@ -25,6 +25,9 @@ class SearchVehicle extends StatefulWidget {
 }
 
 class _SearchVehicleState extends State<SearchVehicle> {
+
+  DataBaseHelper dataBaseHelper = new DataBaseHelper();
+
   //Vehicle? vehicle;
 
   var rating = 0.0;
@@ -34,15 +37,6 @@ class _SearchVehicleState extends State<SearchVehicle> {
   var isLoaded = false;
 
   late List data;
-
-  Future<List> getData() async {
-    final response =
-        await http.get(Uri.parse("https://jsonplaceholder.typicode.com/users"));
-    //await http.get(Uri.parse("http://10.0.2.2:8080/api/vehicles"));
-    print("${response.statusCode}");
-    print("Hola");
-    return json.decode(response.body);
-  }
 
   /*
   _navigateAddUser(BuildContext context) async {
@@ -61,7 +55,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.getData();
+    dataBaseHelper.getData();
   }
 
   @override
@@ -301,7 +295,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
                 */
                 Container(
                   child: FutureBuilder<List>(
-                    future: getData(),
+                    future: dataBaseHelper.getData(),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         print(snapshot.error);

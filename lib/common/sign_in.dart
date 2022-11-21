@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:wheel_manager/sign_up.dart';
-import 'package:wheel_manager/styles/styles.dart';
-import 'package:wheel_manager/widget/bottom_app_bar_2.dart';
+import 'package:wheel_manager/common/sign_up.dart';
+import 'package:wheel_manager/common/styles/styles.dart';
+import 'package:wheel_manager/common/widget/bottom_app_bar_2.dart';
 
-import 'management/presentation/management-list/my_vehicle.dart';
+import '../management/presentation/management-list/my_vehicle.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);

@@ -2,28 +2,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
 
-import '../management/presentation/management-saved/saved_vehicle.dart';
+import '../../maintenance/presentation/maintenance-list/repair.dart';
+import '../../management/presentation/management-list/my_vehicle.dart';
 
-class BottomBar extends StatefulWidget {
-  const BottomBar({super.key});
+class BottomBar2 extends StatefulWidget {
+  const BottomBar2({super.key});
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
+  State<BottomBar2> createState() => _BottomBar2State();
 }
 
-class _BottomBarState extends State<BottomBar> {
+class _BottomBar2State extends State<BottomBar2> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    SearchVehicle(),
+    MyVehicle(),
     Text(
-      'Index 1: Business',
+      'History',
       style: optionStyle,
     ),
-    SavedVehicle(),
+    Repair(),
     Text(
-      'Index 3: ol',
+      'Profile',
       style: optionStyle,
     ),
   ];
@@ -57,8 +58,8 @@ class _BottomBarState extends State<BottomBar> {
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
-            icon: Icon(Icons.favorite_border),
-            label: 'Saved',
+            icon: Icon(Icons.place_outlined),
+            label: 'Repair',
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.black,

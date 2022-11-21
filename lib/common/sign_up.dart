@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wheel_manager/common/styles/styles.dart';
+import 'package:wheel_manager/common/widget/bottom_app_bar.dart';
 import 'package:wheel_manager/renting/domain/logic/logic.dart';
-import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
-import 'package:wheel_manager/styles/styles.dart';
-import 'package:wheel_manager/widget/bottom_app_bar.dart';
 
 import 'package:http/http.dart' as http;
 

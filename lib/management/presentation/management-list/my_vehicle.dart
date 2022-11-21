@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/management/presentation/management-add/add_Vehicle.dart';
-import 'package:wheel_manager/styles/styles.dart';
 import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
+import '../../../common/styles/styles.dart';
 import '../../../renting/domain/entities/vehicle.dart';
 
 class MyVehicle extends StatefulWidget {
