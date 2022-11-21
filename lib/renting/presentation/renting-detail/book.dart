@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 import '../../domain/logic/logic.dart';
 
 //Page Figma
+/*
 class book extends StatelessWidget {
   const book({Key? key}) : super(key: key);
 
@@ -331,6 +332,7 @@ class book extends StatelessWidget {
     );
   }
 }
+*/
 
 class BookPage extends StatefulWidget {
   List list;
@@ -352,16 +354,10 @@ class _BookPageState extends State<BookPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Date & Time'),
+        title: const Text('Reserva'),
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {},
-          )
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -377,7 +373,7 @@ class _BookPageState extends State<BookPage> {
                         padding: const EdgeInsets.only(bottom: 8),
                         width: 150,
                         child: Text(
-                          widget.list[widget.index]['name'],
+                          widget.list[widget.index]['vehicleName'],
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 28,
@@ -389,7 +385,7 @@ class _BookPageState extends State<BookPage> {
                           Column(
                             children: [
                               Text(
-                                "Monark",
+                                widget.list[widget.index]['brand']['brandName'],
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold,
@@ -403,39 +399,18 @@ class _BookPageState extends State<BookPage> {
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(0),
-                      child: IconButton(
-                        padding: const EdgeInsets.all(0),
-                        alignment: Alignment.center,
-                        icon: Icon(Icons.favorite),
-                        iconSize: 30,
-                        color: Colors.red,
-                        onPressed: () {},
-                      ),
-                    ),
-                  ],
-                )
               ]),
             ),
             Container(
                 child:
                 Image(
                     image: NetworkImage(
-                      //vehicles[i].image,
-                      "https://picsum.photos/700/400?random",
+                      //"https://picsum.photos/700/400?random",
+                        widget.list[widget.index]['imageUrl']
                     ),
-                    //height: 120,
-                    fit: BoxFit.fitWidth
+                    height: 220,
+                    //fit: BoxFit.fitWidth
                 ),
-                    /*
-                Image(
-                    image: AssetImage('assets/skate.jpg'),
-                    fit: BoxFit.fitWidth),
-              */
             ),
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -447,7 +422,7 @@ class _BookPageState extends State<BookPage> {
                       Container(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: const Text(
-                          "Book Date",
+                          "Horario de reserva",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -472,13 +447,14 @@ class _BookPageState extends State<BookPage> {
                         Container(
                             margin: const EdgeInsets.only(top: 12, bottom: 0),
                             child: Text(
-                              "START",
+                              "INICIO",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xff2B4C59)),
                             )),
                         Container(
+                          padding: const EdgeInsets.only(left: 40, right: 5),
                           child: TextFormField(
                             controller: startController,
                             decoration: InputDecoration(
@@ -502,37 +478,21 @@ class _BookPageState extends State<BookPage> {
                                 lastDate: DateTime(2030),
                               );
 
-                              //DateFormat sdf = new DateFormat("yyyy-MM-dd'T'HH:mm:ss");
-
                               if (pickedDate != null) {
                                 print(pickedDate);
                                 String formattedDate =
                                     DateFormat('yyyy-MM-dd').format(pickedDate);
                                 print(formattedDate);
 
-                                //String dateWithT = formattedDate.substring(0, 10) + 'T00:00:00.000Z';
-                                //print(dateWithT);
 
                                 setState(() {
-                                  //startController.text = DateTime.parse(dateWithT).toIso8601String();
-                                  //startController.text = dateWithT;
                                   startController.text = formattedDate;
-                                  //print(pickedDate.toString());
                                 });
                               } else {
                                 print("Seleccionar una fecha");
                               }
                             },
                           ),
-                          /*
-                          Text(
-                            "16 Feb. 2022",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          */
                         ),
                       ],
                     ),
@@ -554,13 +514,14 @@ class _BookPageState extends State<BookPage> {
                         Container(
                             margin: const EdgeInsets.only(top: 12, bottom: 0),
                             child: Text(
-                              "END",
+                              "FIN",
                               style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xff2B4C59)),
                             )),
                         Container(
+                          padding: const EdgeInsets.only(left: 40, right: 5),
                           child: TextFormField(
                             controller: endController,
                             decoration: InputDecoration(
@@ -590,12 +551,7 @@ class _BookPageState extends State<BookPage> {
                                 DateFormat('yyyy-MM-dd').format(pickedDate);
                                 print(formattedDate);
 
-                                //String dateWithT = formattedDate.substring(0, 10) + 'T00:00:00.000Z';
-                                //print(dateWithT);
-
                                 setState(() {
-                                  //endController.text = DateTime.parse(dateWithT).toIso8601String();
-                                  //endController.text = dateWithT;
                                   endController.text = formattedDate;
                                 });
                               } else {
@@ -603,15 +559,6 @@ class _BookPageState extends State<BookPage> {
                               }
                             },
                           ),
-                          /*
-                          Text(
-                            "16 Feb. 2022",
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          */
                         ),
                       ],
                     ),
@@ -627,76 +574,6 @@ class _BookPageState extends State<BookPage> {
               ),
             ),
 
-            /*
-            Padding(
-              padding: EdgeInsets.only(top: 2.h),
-              child: new TextFormField(
-                controller: startController,
-                decoration: new InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  prefixIcon: Icon(Icons.date_range),
-                  label: const Text('Fecha de inicio'),
-                  labelStyle: TextStyle(
-                    fontSize: 12.sp,
-                    color: const Color(0xff9FA5C0),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(4.h),
-                    ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: const Color(0xff9FA5C0),
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(4.h),
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Color(0xff14a793),
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(4.h),
-                    ),
-                  ),
-                ),
-                validator: (value) {
-                  // add your custom validation here.
-                  if (value!.isEmpty) {
-                    return 'Seleccione una fecha de emisión';
-                  }
-                },
-                readOnly: true,
-                onTap: () async {
-                  DateTime? pickedDate = await showDatePicker(
-                    context: context,
-                    locale: const Locale("es", "PE"),
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime(2008),
-                    lastDate: DateTime(
-                        valueDate.year, valueDate.month, valueDate.day),
-                  );
-
-                  if (pickedDate != null) {
-                    print(pickedDate);
-                    String formattedDate =
-                    DateFormat('yyyy/MM/dd').format(pickedDate);
-                    print(formattedDate);
-
-                    setState(() {
-                      startController.text = formattedDate;
-                    });
-                  } else {
-                    print("Seleccionar una fecha");
-                  }
-                },
-              ),
-            ),
-             */
-
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 5),
               child: Row(children: [
@@ -707,7 +584,7 @@ class _BookPageState extends State<BookPage> {
                       Container(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: const Text(
-                          "Location",
+                          "Lugar de recojo",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -732,7 +609,7 @@ class _BookPageState extends State<BookPage> {
                         Container(
                             margin: const EdgeInsets.only(top: 18, bottom: 0),
                             child: Text(
-                              "Street 203 House 348 City Kigali",
+                              "Calle 203 Cuadra 38 Joaquin Atompo",
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -770,7 +647,7 @@ class _BookPageState extends State<BookPage> {
                     padding:
                         const EdgeInsets.only(top: 15, bottom: 10, left: 15),
                     child: const Text(
-                      "Total",
+                      "Costo",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
@@ -827,7 +704,7 @@ class _BookPageState extends State<BookPage> {
 
                       },
                       child: Text(
-                        "Book Now",
+                        "Reservar",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,

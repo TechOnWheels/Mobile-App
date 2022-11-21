@@ -17,15 +17,17 @@ class _BottomBarState extends State<BottomBar> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     SearchVehicle(),
+    /*
     Text(
       'Index 1: Business',
       style: optionStyle,
-    ),
-    SavedVehicle(),
+    ),*/
+    //SavedVehicle(),
     Text(
       'Index 3: ol',
       style: optionStyle,
     ),
+
   ];
 
   void _onItemTapped(int index) {
@@ -50,6 +52,7 @@ class _BottomBarState extends State<BottomBar> {
             icon: Icon(Icons.location_searching),
             label: 'Discover',
           ),
+          /*
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
             icon: Icon(Icons.auto_awesome_motion_outlined),
@@ -60,11 +63,13 @@ class _BottomBarState extends State<BottomBar> {
             icon: Icon(Icons.favorite_border),
             label: 'Saved',
           ),
+          */
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
             icon: Icon(Icons.person_outline),
             label: 'Profile',
           ),
+
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

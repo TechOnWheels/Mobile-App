@@ -1,3 +1,4 @@
+/*
 class Maintenance{
   String title;
   String prize;
@@ -15,4 +16,46 @@ class Maintenance{
     ];
   }
 
+}
+ */
+
+class Maintenance {
+  String? description;
+  String? endDate;
+  int? id;
+  String? imageUrl;
+  String? offerName;
+  int? offerPrice;
+  String? startDate;
+
+  Maintenance(
+      {this.description,
+        this.endDate,
+        this.id,
+        this.imageUrl,
+        this.offerName,
+        this.offerPrice,
+        this.startDate});
+
+  Maintenance.fromJson(Map<String, dynamic> json) {
+    description = json['description'];
+    endDate = json['endDate'];
+    id = json['id'];
+    imageUrl = json['imageUrl'];
+    offerName = json['offerName'];
+    offerPrice = json['offerPrice'];
+    startDate = json['startDate'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['description'] = this.description;
+    data['endDate'] = this.endDate;
+    data['id'] = this.id;
+    data['imageUrl'] = this.imageUrl;
+    data['offerName'] = this.offerName;
+    data['offerPrice'] = this.offerPrice;
+    data['startDate'] = this.startDate;
+    return data;
+  }
 }

@@ -1,20 +1,13 @@
-import 'dart:convert';
-import 'dart:math';
-
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wheel_manager/common/sign_in.dart';
 import 'package:wheel_manager/renting/domain/entities/vehicle.dart';
-import 'package:wheel_manager/renting/presentation/widgets/favorite.dart';
-import 'package:wheel_manager/renting/presentation/widgets/stars_quality.dart';
 import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
 import 'package:http/http.dart' as http;
 
 import '../../../common/styles/styles.dart';
-import '../../../search.dart';
 import '../../domain/logic/logic.dart';
 
 class SearchVehicle extends StatefulWidget {
@@ -99,7 +92,12 @@ class _SearchVehicleState extends State<SearchVehicle> {
                                   //FLECHA REGRESAR
                                   child: TextButton(
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      //Navigator.pop(context);
+                                      Navigator.of(context).push(
+                                        new MaterialPageRoute(
+                                          builder: (BuildContext context) => new SignIn(),
+                                        ),
+                                      );
                                     },
                                     child: Icon(
                                       Icons.arrow_back_ios,
@@ -111,13 +109,14 @@ class _SearchVehicleState extends State<SearchVehicle> {
                                 Container(
                                   alignment: Alignment.center,
                                   margin: EdgeInsets.only(top: 20, left: 75),
-                                  child: Text("Discover",
+                                  child: Text("Descubre",
                                       style: TextStyle(
                                           color: Color(0xFF000000),
                                           fontSize: 24,
                                           fontWeight: FontWeight.bold),
                                       textAlign: TextAlign.left),
                                 ),
+                                /*
                                 IconButton(
                                   padding:
                                       new EdgeInsets.only(top: 20.0, left: 90),
@@ -126,6 +125,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
                                   color: Colors.black,
                                   onPressed: () {},
                                 ),
+                                */
                               ],
                             ),
                           ),
@@ -134,6 +134,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
                     ],
                   ),
                 ),
+                /*
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                   child: Row(
@@ -167,11 +168,12 @@ class _SearchVehicleState extends State<SearchVehicle> {
                     ],
                   ),
                 ),
+                */
                 Container(
                   margin: EdgeInsets.only(left: 20, bottom: 7, top: 15),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "TRENDING",
+                    "TENDENCIAS",
                     style: TextStyle(
                       color: Color(0xFF2B4C59).withOpacity(0.8),
                       fontSize: 20,
@@ -315,6 +317,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
           ),
         ),
       ),
+      /*
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
         label: const Text('Filter'),
@@ -322,6 +325,7 @@ class _SearchVehicleState extends State<SearchVehicle> {
         backgroundColor: Color(0xff2CB67D),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      */
     );
   }
 }
@@ -357,17 +361,17 @@ class ItemList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: Column(
                     children: <Widget>[
-
                     Image(
                       image: NetworkImage(
                         //vehicles[i].image,
-                        "https://picsum.photos/700/400?random",
+                        //"https://picsum.photos/700/400?random",
+                        list[i]['imageUrl'].toString(),
                       ),
                       height: 120,
                     ),
 
                       Text(
-                        list[i]['name'].toString(),
+                        list[i]['vehicleName'].toString(),
                         style: TextStyle(
                           fontSize: 11.sp,
                           color: Color(0xff2B4C59),
@@ -381,6 +385,7 @@ class ItemList extends StatelessWidget {
                           SizedBox(
                             width: 20,
                           ),
+                          /*
                           Text(
                             list[i]['id'].toString(),
                             style: TextStyle(
@@ -388,11 +393,12 @@ class ItemList extends StatelessWidget {
                               color: Color(0xff2B4C59),
                             ),
                           ),
+                          */
                           Text(
-                            "/day",
+                            "Calificación: " + list[i]['score'].toString(),
                             style: TextStyle(
                               fontSize: 11.sp,
-                              color: Color(0xffBECEDA),
+                              color: Color(0xff515356),
                             ),
                           ),
                         ],
@@ -400,40 +406,9 @@ class ItemList extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      StarsQuality(),
+                      //StarsQuality(),
                       SizedBox(
                         height: 10,
-                      ),
-                      Container(
-                        width: 150,
-                        child: Row(
-                          children: [
-                            FavoriteIcon(),
-                            SizedBox(
-                              width: 100,
-                            ),
-                            Container(
-                              width: 10.0,
-                              height: 25.0,
-                              child: new RawMaterialButton(
-                                shape: new CircleBorder(),
-                                elevation: 0.0,
-                                child: Icon(
-                                  Icons.arrow_circle_right,
-                                  color: Color(0xff2B4C59),
-                                ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const viewDetail()),
-                                  );
-                                },
-                              ),
-                            )
-                          ],
-                        ),
                       ),
                     ],
                   ),
@@ -449,74 +424,5 @@ class ItemList extends StatelessWidget {
         mainAxisExtent: 264,
       ),
     );
-    /*
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      itemCount: list == null ? 0 : list.length,
-      itemBuilder: (context, i) {
-        return Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                        Detail(list: list, index: i),
-                  ),
-                ),
-                child: Container(
-                  height: 100.3,
-                  child: Card(
-                    color: Colors
-                        .primaries[Random().nextInt(Colors.primaries.length)],
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                child: Text(
-                                  list[i]['name'].toString(),
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.black87,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                child: Text(
-                                  list[i]['email'].toString(),
-                                  style: TextStyle(
-                                    fontSize: 15.0,
-                                    color: Colors.black87,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        );
-      },
-    );
-    */
   }
 }

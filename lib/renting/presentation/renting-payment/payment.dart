@@ -20,7 +20,7 @@ class payment extends StatelessWidget{
             alignment: Alignment.centerLeft,
         ),
         appBar: AppBar(
-          title: const Text('Payment'), backgroundColor: Colors.white, foregroundColor: Colors.black87,
+          title: const Text('Pago'), backgroundColor: Colors.white, foregroundColor: Colors.black87,
           centerTitle: true,
           actions: <Widget>[
             IconButton(
@@ -30,9 +30,6 @@ class payment extends StatelessWidget{
           ],
         ),
 
-
-
-
         body: Container(
           child: SingleChildScrollView(
 
@@ -40,9 +37,7 @@ class payment extends StatelessWidget{
               child: Container(
                 //height: MediaQuery.of(context).size.height-40,
                 width: MediaQuery.of(context).size.width,
-
                 child: Container(
-
                   child: Column(
                     children: [
 
@@ -56,18 +51,14 @@ class payment extends StatelessWidget{
                         ),
                       ),
 
-
-
                       //INFORMACION TARJETA
                       Container(
                         width: 350, height: 471,
                         color: Colors.white,
-
                         child: Container(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-
                               Container(
                                 margin: EdgeInsets.only(left: 30),
                                 child: Column(
@@ -184,9 +175,7 @@ class payment extends StatelessWidget{
                                                     obscureText: false,
                                                     decoration: InputDecoration(
                                                       hintText: "MM/YY",
-
                                                       border: UnderlineInputBorder(
-
                                                         borderSide: BorderSide(
                                                           color: Color(0xffBEB9B9),
                                                           width: 1,
@@ -254,24 +243,9 @@ class payment extends StatelessWidget{
                                         ],
                                       ),
                                     ),
-
-                                    //TEXTO
-                                    Container(
-                                      margin: EdgeInsets.only(top: 28,bottom: 23),
-                                      child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed magna ut le malesuada consequat.",
-                                          style: TextStyle(
-                                              color: Color(0xFF24253D).withOpacity(0.5),
-                                              fontSize: 16)
-                                      ),
-                                    ),
-
                                   ],
                                 ),
                               ),
-
-
-
-
                             ],
                           ),
                         ),
@@ -299,7 +273,7 @@ class payment extends StatelessWidget{
                       Container(
                         padding: const EdgeInsets.only(top:15,bottom:10,left:15),
                         child: const Text(
-                          "Total",
+                          "Costo",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
@@ -348,7 +322,7 @@ class payment extends StatelessWidget{
                               MaterialPageRoute(
                                   builder: (context) => Confirmation()),);
                           },
-                          child: Text("Pay", style: TextStyle(
+                          child: Text("Pagar", style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
                           ),),

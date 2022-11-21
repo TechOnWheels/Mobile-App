@@ -2,27 +2,57 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wheel_manager/maintenance/domain/entities/maintenance.dart';
+import 'package:wheel_manager/maintenance/domain/logic/logic.dart';
 import 'package:wheel_manager/tracking/presentation/tracking-detail/tracking.dart';
 import 'package:wheel_manager/maintenance/presentation/maintenance-serviceDetail/viewMaintenance.dart';
 import 'package:wheel_manager/renting/presentation/renting-itemDetail/view_detail.dart';
 
 import '../../../common/styles/styles.dart';
+import '../../../common/widget/bottom_app_bar_2.dart';
+import '../../../renting/domain/entities/vehicle.dart';
 
-class Repair extends StatefulWidget {
-  const Repair({Key? key}) : super(key: key);
+class Offer extends StatefulWidget {
+  const Offer({Key? key}) : super(key: key);
 
   @override
-  State<Repair> createState() => _RepairState();
+  State<Offer> createState() => _OfferState();
 }
 
-class _RepairState extends State<Repair> {
-  List<Maintenance> maintenance = Maintenance.maintenance();
+class _OfferState extends State<Offer> {
+
+  DatabaseMaintenance dataBaseHelper = new DatabaseMaintenance();
+
+//Vehicle? vehicle;
+
+  var rating = 0.0;
+  double? _ratingValue;
+
+  List<Vehicle> vehicles = Vehicle.vehicles();
   var isLoaded = false;
+
+  late List data;
+
+/*
+  _navigateAddUser(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddUserPage()),
+    );
+
+    if (result) {
+      setState(() {});
+    }
+  }
+   */
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
+    dataBaseHelper.getMaintenance();
   }
+
+  //List<Maintenance> maintenance = Maintenance.maintenance();
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +87,12 @@ class _RepairState extends State<Repair> {
                                   //FLECHA REGRESAR
                                   child: TextButton(
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      //Navigator.pop(context);
+                                      Navigator.of(context).push(
+                                        new MaterialPageRoute(
+                                          builder: (BuildContext context) => new BottomBar2(),
+                                        ),
+                                      );
                                     },
                                     child: Icon(
                                       Icons.arrow_back_ios,
@@ -69,13 +104,14 @@ class _RepairState extends State<Repair> {
                                 Container(
                                   alignment: Alignment.center,
                                   margin: EdgeInsets.only(top: 20, left: 85),
-                                  child: Text("Repair",
+                                  child: Text("Ofertas",
                                       style: TextStyle(
                                           color: Color(0xFF000000),
                                           fontSize: 24,
                                           fontWeight: FontWeight.bold),
                                       textAlign: TextAlign.left),
                                 ),
+                                /*
                                 IconButton(
                                   padding:
                                   new EdgeInsets.only(top: 20.0, left: 90),
@@ -84,6 +120,7 @@ class _RepairState extends State<Repair> {
                                   color: Colors.black,
                                   onPressed: () {},
                                 ),
+                                */
                               ],
                             ),
                           ),
@@ -96,13 +133,31 @@ class _RepairState extends State<Repair> {
                   margin: EdgeInsets.only(left: 20, bottom: 7, top: 15),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "TRENDING",
+                    "TENDENCIAS",
                     style: TextStyle(
                       color: Color(0xFF2B4C59).withOpacity(0.8),
                       fontSize: 20,
                     ),
                   ),
                 ),
+                Container(
+                  child: FutureBuilder<List>(
+                    future: dataBaseHelper.getMaintenance(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        print(snapshot.error);
+                      }
+                      return snapshot.hasData
+                          ? ItemListMaintenance(
+                        list: snapshot.data ?? [],
+                      )
+                          : Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                  ),
+                ),
+                /*
                 Column(
                   children: [
                     Center(
@@ -241,25 +296,101 @@ class _RepairState extends State<Repair> {
                     ),
                   ],
                 ),
+                */
               ],
             ),
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Add your onPressed code here!
-          Navigator.of(context).push(
-            new MaterialPageRoute(
-              builder: (BuildContext context) => new Tracking(),
+    );
+  }
+}
+
+
+class ItemListMaintenance extends StatelessWidget {
+  final List list;
+
+  const ItemListMaintenance({required this.list});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      //itemCount: 10,
+      itemCount: list == null ? 0 : list.length,
+      itemBuilder: (ctx, i) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 1.sp, vertical: 1.sp),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => DetailMaintenance(index: i, list: list),
+              ),
             ),
-          );
-        },
-        label: const Text('Filter'),
-        icon: const Icon(Icons.filter_list),
-        backgroundColor: Color(0xff2CB67D),
+            child: Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                margin: EdgeInsets.all(5),
+                elevation: 5,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Column(
+                    children: <Widget>[
+                      Image(
+                        image: NetworkImage(
+                          //vehicles[i].image,
+                          //"https://picsum.photos/700/400?random",
+                          list[i]['imageUrl'].toString(),
+                        ),
+                        height: 120,
+                      ),
+
+                      Text(
+                        list[i]['offerName'].toString(),
+                        style: TextStyle(
+                          fontSize: 11.sp,
+                          color: Color(0xff2B4C59),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            "Precio: " + list[i]['offerPrice'].toString(),
+                            style: TextStyle(
+                              fontSize: 11.sp,
+                              color: Color(0xff515356),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      //StarsQuality(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                    ],
+                  ),
+                )),
+          ),
+        );
+      },
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 1.0,
+        crossAxisSpacing: 0.0,
+        mainAxisSpacing: 5,
+        mainAxisExtent: 264,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

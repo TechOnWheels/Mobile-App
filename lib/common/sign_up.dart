@@ -6,6 +6,7 @@ import 'package:wheel_manager/common/widget/bottom_app_bar.dart';
 import 'package:wheel_manager/renting/domain/logic/logic.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
 
 
 class SignUp extends StatefulWidget {
@@ -22,8 +23,10 @@ class _SignUpState extends State<SignUp> {
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
+  //final TextEditingController phoneController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  //final TextEditingController addressController = TextEditingController();
+  final TextEditingController dniController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
@@ -71,7 +74,7 @@ class _SignUpState extends State<SignUp> {
                           Container(
                             //alignment: Alignment.center,
                             margin: EdgeInsets.only(left: 25, top: 50),
-                            child: Text("Sign Up",
+                            child: Text("Registro",
                                 style: TextStyle(
                                     color: Color(0xFF000000), fontSize: 48),
                                 textAlign: TextAlign.left),
@@ -88,7 +91,7 @@ class _SignUpState extends State<SignUp> {
                     ],
                   ),
                 ),
-                objStyles.textTitle("FULLNAME"),
+                objStyles.textTitle("Nombre"),
                 Center(
                   child: Container(
                     margin: EdgeInsets.only(bottom: 20),
@@ -109,7 +112,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                objStyles.textTitle("EMAIL"),
+                objStyles.textTitle("Correo Electrónico"),
                 Center(
                   child: Container(
                     margin: EdgeInsets.only(bottom: 20),
@@ -131,6 +134,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
 
+                /*
                 objStyles.textTitle("PHONE"),
                 Center(
                   child: Container(
@@ -151,8 +155,31 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
+                ),*/
+
+                objStyles.textTitle("Nombre de usuario"),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    height: 25,
+                    width: 340,
+                    alignment: Alignment.centerLeft,
+                    child: TextField(
+                      controller: usernameController,
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xffE5E5E5),
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
 
+                /*
                 objStyles.textTitle("ADDRESS"),
                 Center(
                   child: Container(
@@ -173,9 +200,31 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
+                ),*/
+
+                objStyles.textTitle("DNI"),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    height: 25,
+                    width: 340,
+                    alignment: Alignment.centerLeft,
+                    child: TextField(
+                      controller: dniController,
+                      decoration: InputDecoration(
+                        border: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xffE5E5E5),
+                            width: 1,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
 
-                objStyles.textTitle("PASSWORD"),
+                objStyles.textTitle("Contraseña"),
                 Center(
                   child: Container(
                     margin: EdgeInsets.only(bottom: 20),
@@ -210,7 +259,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
 
-                objStyles.textTitle("PASSWORD"),
+                objStyles.textTitle("Confirmar contraseña"),
                 Center(
                   child: Container(
                     margin: EdgeInsets.only(bottom: 30),
@@ -252,13 +301,19 @@ class _SignUpState extends State<SignUp> {
                       child: ElevatedButton(
                         onPressed: () {
                           dataBaseHelper.addUser_(nameController.text.trim(),
+                              emailController.text.trim(), usernameController.text.trim(),
+                              dniController.text.trim(), passwordController.text.trim());
+                          /*
+                          dataBaseHelper.addUser_(nameController.text.trim(),
                               emailController.text.trim(), phoneController.text.trim(),
                               addressController.text.trim(), passwordController.text.trim());
+                          */
                           Navigator.push(
                             context,
                             //MaterialPageRoute(builder: (context) => const SearchVehicle()),
 
-                            MaterialPageRoute(builder: (context) => const BottomBar()),
+                            //MaterialPageRoute(builder: (context) => const BottomBar()),
+                            MaterialPageRoute(builder: (context) => const SearchVehicle()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -304,3 +359,4 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+

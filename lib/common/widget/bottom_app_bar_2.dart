@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wheel_manager/renting/presentation/renting-list/search_vehicle.dart';
 
-import '../../maintenance/presentation/maintenance-list/repair.dart';
+import '../../maintenance/presentation/maintenance-list/offer.dart';
 import '../../management/presentation/management-list/my_vehicle.dart';
 
 class BottomBar2 extends StatefulWidget {
@@ -18,15 +18,17 @@ class _BottomBar2State extends State<BottomBar2> {
   TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     MyVehicle(),
+    /*
     Text(
       'History',
       style: optionStyle,
-    ),
-    Repair(),
+    ),*/
+    Offer(),
+    /*
     Text(
       'Profile',
       style: optionStyle,
-    ),
+    ),*/
   ];
 
   void _onItemTapped(int index) {
@@ -49,23 +51,25 @@ class _BottomBar2State extends State<BottomBar2> {
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
             icon: Icon(Icons.location_searching),
-            label: 'Discover',
+            label: 'Descubre',
           ),
+          /*
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
             icon: Icon(Icons.auto_awesome_motion_outlined),
             label: 'History',
-          ),
+          ),*/
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
             icon: Icon(Icons.place_outlined),
-            label: 'Repair',
+            label: 'Ofertas',
           ),
+          /*
           BottomNavigationBarItem(
             backgroundColor: Colors.black,
             icon: Icon(Icons.person_outline),
             label: 'Profile',
-          ),
+          ),*/
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
