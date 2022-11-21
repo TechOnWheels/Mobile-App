@@ -213,11 +213,9 @@ class _DetailMaintenanceState extends State<DetailMaintenance> {
                       Container(
                         padding: const EdgeInsets.only(top: 10),
                         child: Text(
-                          //"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
                           widget.list[widget.index]['description'],
                           style: TextStyle(
                             fontSize: 16,
-                            //fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

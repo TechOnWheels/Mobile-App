@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wheel_manager/tracking/domain/logic/logic.dart';
 
 class Tracking extends StatefulWidget {
   const Tracking({Key? key}) : super(key: key);
@@ -34,6 +35,8 @@ class _TrackingState extends State<Tracking> {
     LatLng(-12.0898564, -77.0522111),
   ];
 
+  DatabasehelperTracking databasehelper = DatabasehelperTracking();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -41,23 +44,32 @@ class _TrackingState extends State<Tracking> {
 
     // declared for loop for various locations
     for (int i = 0; i < latLen.length; i++) {
+      databasehelper.addMarker(_markers, latLen, i);
+      /*
       _markers.add(
-          // added markers
-          Marker(
-        markerId: MarkerId(i.toString()),
-        position: latLen[i],
-        infoWindow: InfoWindow(
-          title: 'HOTEL',
-          snippet: '5 Star Hotel',
+        // added markers
+        Marker(
+          markerId: MarkerId(i.toString()),
+          position: latLen[i],
+          infoWindow: InfoWindow(
+            title: 'HOTEL',
+            snippet: '5 Star Hotel',
+          ),
+          icon: BitmapDescriptor.defaultMarker,
         ),
-        icon: BitmapDescriptor.defaultMarker,
-      ));
+      );
+      */
       setState(() {});
-      _polyline.add(Polyline(
-        polylineId: PolylineId('1'),
-        points: latLen,
-        color: Color(0xffE57355),
-      ));
+      /*
+      _polyline.add(
+        Polyline(
+          polylineId: PolylineId('1'),
+          points: latLen,
+          color: Color(0xffE57355),
+        ),
+      );
+      */
+      databasehelper.addPoint(_polyline, latLen);
     }
   }
 
@@ -92,13 +104,14 @@ class _TrackingState extends State<Tracking> {
                   Container(
                     alignment: Alignment.center,
                     margin: EdgeInsets.only(left: 70),
-                    child: Text("Tracking",
+                    child: Text("Ubicación",
                         style: TextStyle(
                             color: Color(0xFF000000),
                             fontSize: 24,
                             fontWeight: FontWeight.bold),
                         textAlign: TextAlign.left),
                   ),
+                  /*
                   IconButton(
                     padding: new EdgeInsets.only(
                       left: 90,
@@ -107,6 +120,7 @@ class _TrackingState extends State<Tracking> {
                     color: Colors.black,
                     onPressed: () {},
                   ),
+                  */
                 ],
               ),
             ),
@@ -140,6 +154,7 @@ class _TrackingState extends State<Tracking> {
           ),
         ),
       ),
+      /*
       bottomNavigationBar: BottomAppBar(
         child: Container(
           height: 80,//set your height here
@@ -246,6 +261,7 @@ class _TrackingState extends State<Tracking> {
         ),
 
       ),
+      */
     );
   }
 
